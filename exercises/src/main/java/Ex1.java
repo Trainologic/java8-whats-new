@@ -11,7 +11,7 @@ public class Ex1 {
      * @return a function that always return b
      */
     public static <A,B> Function<A,B> constFunction(B b) {
-        return a -> b;
+        return null;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Ex1 {
      *
      */
     public static <A,B,C> BiFunction<B,A,C> flip(BiFunction<A,B,C> f) {
-        return (B b, A a) -> f.apply(a, b);
+        return null;
     }
 
 
@@ -34,7 +34,7 @@ public class Ex1 {
      * @return curry function created from the given f
      */
     public static <A,B,C> Function<A, Function<B,C>> cur(BiFunction<A,B,C> f) {
-        return a -> b -> f.apply(a, b);
+        return null;
     }
 
 
