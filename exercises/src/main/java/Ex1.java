@@ -38,12 +38,11 @@ public class Ex1 {
             super(c);
         }
 
-        TransformableStringSet transform(Function<String,String> transformer ){
-            TransformableStringSet result = new TransformableStringSet();
-            for (String element: this) {
-                result.add(transformer.apply(element));
-            }
-            return result;
+        /**
+         * @return new TransformableStringSet after transformer was activated for each element of the current (this) set
+         */
+        TransformableStringSet transform(Function<String,String> transformer ) {
+            return null;
         }
     }
 
@@ -67,8 +66,7 @@ public class Ex1 {
      * @return the given words after capitalization
      */
     public static Set<String> capitalize(Set<String> words){
-        TransformableStringSet result = new TransformableStringSet(words);
-        return result.transform(Ex1::capitalize);
+        return null;
     }
 
 
