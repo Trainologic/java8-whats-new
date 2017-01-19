@@ -1,5 +1,6 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -34,7 +35,6 @@ public class Sample7StreamOverview {
 //        Util.println(Arrays.toString(stream.toArray()));
 //        // [Vera, Chuck]
 
-
         /**
          * Chaining
          */
@@ -48,87 +48,24 @@ public class Sample7StreamOverview {
         /**
          * Transforming
          */
-        //Transform one stream to another
-//        Stream<Integer> hashCodes = names.stream().map(name -> name.hashCode());
+//        // mapToInt argument is of type ToIntFunction<String>.
+//        // This is an int-producing specialization for Function.
+//        IntStream hashCodes = names.stream().mapToInt(String::hashCode);
 //        Util.println(hashCodes.toArray());
 
 
         /**
-         * Reduce + Optional
+         * Sum
          */
-//        //Calculate the sum of all hash codes
-//        Optional<Integer> hashCodesSum = names.stream()
+
+//        int total = names.stream().mapToInt(String::hashCode).sum();
+//
+//        // Optional (new in Java8)
+//        Optional<Integer> reduce = names.stream()
 //                        .map(String::hashCode)
 //                        .reduce((x, y) -> x + y);
-//        Util.println(hashCodesSum.get());
 //
-//
-        /**
-         * IntStream
-         */
-//        //Calculate the sum of all hash codes with IntStream
-//        IntStream intStream = names.stream().mapToInt(String::hashCode);
-//        Util.println(intStream.sum());
-//
-
-
-        /**
-         * collect
-         */
-//        // We first map the String elements to lower case.
-//        // Then we return a new collection with the lower case names.
-//        // We will have a deeper look on collect() soon.
-//        List<String> namesLowerCase = names.stream()
-//                .map(s -> s.toLowerCase())
-//                .collect(Collectors.toList());
-//        Util.println(namesLowerCase);
-//        // [vera, chuck, dave, dave]
-
-
-        /**
-         * Exercises:
-         *
-         */
-
-        // Ex2
-        // FilterCollectionTest
-        //KidsTest
-        //OldestPersonTest
-        //ToUpperCaseTest
-        //SumTest
-
-
-        /**
-         * flatMap = map + flatten
-         */
-//        // Print all letters occurred in the given names
-        Stream<String> allLetters = names.stream()
-                .flatMap(name -> Arrays.asList(name.split("")).stream());
-
-        Set<String> allDistinctLetters = allLetters.collect(Collectors.toSet());
-        Util.println(allDistinctLetters);
-
-
-        /**
-         * flatMapToInt
-         */
-
-//        // Calculates the average length of the values in the names list.
-//        // flatMapToInt returns an IntStream after applying the function.
-        OptionalDouble avg = names.stream()
-                .flatMapToInt(s -> IntStream.of(s.length()))
-                .average();
-
-
-
-        /**
-         * Exercises:
-         *
-         */
-
-        //FlatCollectionTest
-
-
+//        assert (total == reduce.get());
 
     }
 
