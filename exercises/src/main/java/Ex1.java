@@ -41,9 +41,14 @@ public class Ex1 {
         /**
          * @return new TransformableStringSet after transformer was activated for each element of the current (this) set
          */
-        TransformableStringSet transform(Function<String,String> transformer ) {
-            return null;
+        TransformableStringSet transform(Function<String,String> transformer ){
+            TransformableStringSet result = new TransformableStringSet();
+            for (String element: this) {
+                result.add(transformer.apply(element));
+            }
+            return result;
         }
+
     }
 
 
