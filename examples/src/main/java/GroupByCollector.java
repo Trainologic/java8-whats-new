@@ -6,6 +6,8 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collector.Characteristics.*;
+
 /**
  * @author victorp
  */
@@ -47,6 +49,6 @@ public class GroupByCollector<F,R> implements Collector<R, Map<F,List<R>>, Map<F
 
     @Override
     public Set<Characteristics> characteristics() {
-        return Collections.unmodifiableSet(EnumSet.of(Collector.Characteristics.IDENTITY_FINISH));
+        return Collections.unmodifiableSet(EnumSet.of(IDENTITY_FINISH,UNORDERED));
     }
 }
