@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.IntStream;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class Sample7StreamOverview {
 
 
-    public static void main(String... args) {
+    public static void main(String... args) throws Throwable {
 
 
         // The list is the pipeline data source.
@@ -48,6 +48,14 @@ public class Sample7StreamOverview {
         /**
          * Transforming
          */
+
+        //  map .
+//        Stream<Integer> hashCodes = names
+//                .stream()
+//                .map(String::hashCode);
+//
+//        Util.println(hashCodes.toArray());
+
 //        // mapToInt argument is of type ToIntFunction<String>.
 //        // This is an int-producing specialization for Function.
 //        IntStream hashCodes = names.stream().mapToInt(String::hashCode);
@@ -59,15 +67,87 @@ public class Sample7StreamOverview {
          */
 
 //        int total = names.stream().mapToInt(String::hashCode).sum();
-//
-//        // Optional (new in Java8)
+////
+////        // Optional (new in Java8)
 //        Optional<Integer> reduce = names.stream()
 //                        .map(String::hashCode)
 //                        .reduce((x, y) -> x + y);
 //
-//        assert (total == reduce.get());
+//
+//        assert (total == reduce.orElseGet( ()-> {throw new IllegalStateException();}));
+
+
+        /**
+         * collector
+         */
+
+//        Stream<Integer> hashCodesForSet = names
+//                .stream()
+//                .map(String::hashCode);
+//
+//        Util.println(hashCodesForSet.collect(Collectors.toSet()));
+
+
+        /**
+         * Exercise
+         * Ex2
+         *
+         *
+         * ToUpperCase
+         *
+         */
+
+
+        /**
+         * flatMap == map + flatten
+         *
+         * print all unique letters
+         */
+
+
+//        List<String> uniqueLetters = names.stream()
+//                .map(name -> name.split(""))
+//                .flatMap(letters -> Arrays.stream(letters))
+//                .distinct()
+//                .collect(Collectors.toList());
+//        Util.println(uniqueLetters);
+
+
+
+
+        /**
+         * Optional
+         */
+
+
+        //creation
+//        Optional emptyOptional = Optional.empty();
+//        Optional<String> nonEmptyOptional = Optional.of( "msg" );
+//        Optional nullableOptional = Optional.ofNullable( null );
+//
+//
+//        Util.println(nonEmptyOptional.orElse("else"));
+//        Util.println(emptyOptional.orElse("else"));
+//        Util.println(nullableOptional.orElse("else"));
+//
+//
+//        emptyOptional.orElseThrow( IllegalStateException::new );
+//
+//        Util.println(nonEmptyOptional.filter(m -> m.startsWith("m")));
+//
+
+
+        /**
+         * Custom collector
+         */
+//        Util.println(
+//                names.stream()
+//                        .collect(new GroupByCollector<>(name->name.length())));
+//
+//
 
     }
+
 
 
 }
