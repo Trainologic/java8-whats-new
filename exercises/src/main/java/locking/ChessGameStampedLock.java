@@ -1,5 +1,7 @@
 package locking;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
@@ -28,54 +30,22 @@ public class ChessGameStampedLock extends ChessGame {
         return "ChessGameStampedLock";
     }
 
-    <Result> Result readWithSpin(User user,Function<User,Result> readUser) {
-        StampedLock lock = stampedLocks.get(user.getName());
-        long stamp = lock.tryOptimisticRead();
 
-        Result result;
-        do {
-            result = readUser.apply(user);
-        }while(!lock.validate(stamp));
-
-        return result;
-
-    }
-
+    /**
+     * Impl using {@link StampedLock}
+     */
     @Override
     <Result> Result read(User user,Function<User,Result> readUser) {
-        return readWithoutSpin(user,readUser);
+        throw new NotImplementedException();
     }
 
 
-    <Result> Result readWithoutSpin(User user,Function<User,Result> readUser) {
-        StampedLock lock = stampedLocks.get(user.getName());
-        long stamp = lock.tryOptimisticRead();
-        Result result = readUser.apply(user);
-        if (!lock.validate(stamp)) {
-            Lock readLock = lock.asReadLock();
-            readLock.lock();
-            try {
-                result = readUser.apply(user);
-            }finally {
-                readLock.unlock();
-            }
-        }
-        return result;
-    }
-
+    /**
+     * Impl using {@link StampedLock}
+     */
     @Override
     void update(User user, Consumer<User> updateUser) {
-
-        StampedLock lock = stampedLocks.get(user.getName());
-        Lock writeLock = lock.asReadWriteLock().writeLock();
-        writeLock.lock();
-        try
-        {
-            updateUser.accept(user);
-        }finally {
-            writeLock.unlock();
-        }
-
+        throw new NotImplementedException();
     }
 
 

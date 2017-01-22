@@ -17,21 +17,6 @@ import java.util.stream.IntStream;
 public class GamesTest {
 
 
-    /**
-     * Result when running on i5 CPU (4 cored)
-     *
-     *     int warmUpTimes = 5;
-     *     int times = 5;
-     *     int chessSteps = 5;
-     *
-     * ChessGameSync total time millis: 4943
-     * ChessGameSync read/sec: 136066
-     * ChessGameRWLock total time millis: 5350
-     * ChessGameRWLock read/sec: 63231
-     * ChessGameStampedLock total time millis: 5161
-     * ChessGameStampedLock read/sec: 257797
-     */
-
 
     int warmUpTimes = 2;
     int times = 2;
