@@ -19,7 +19,6 @@ abstract public class ChessGame {
 
 
     private final static long UPDATE_MILLIS = 300;
-    private final static long READ_MILLIS = 10;
 
 
 
@@ -56,13 +55,10 @@ abstract public class ChessGame {
 
     private void watchUser(User user){
         while (gameCountDown.getCount() != 0){
-            long theState = read(user, (u) -> {
-                return u.gameState;
-            });
+            long theState = read(user, (u) -> u.gameState);
 
             //print theState
             readCount.increment();
-            //sleep(READ_MILLIS);
         }
 
 
