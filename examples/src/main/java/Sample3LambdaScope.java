@@ -3,16 +3,16 @@
  */
 public class Sample3LambdaScope {
 
-    Runnable r1 = () -> Util.println(this);
+    public void runIt(){
+        Runnable r1 = () -> Util.println(this);
 
 
-    Runnable r2 = new Runnable() {
-        public void run() {
-            System.out.println(this);
-        }
-    };
-
-
+        Runnable r2 = new Runnable() {
+            public void run() {
+                Util.println(this);
+            }
+        };
+    }
 
 
     public String toString() {
@@ -22,8 +22,8 @@ public class Sample3LambdaScope {
 
 
     public static void main(String[] args) {
-            new Sample3LambdaScope().r1.run();
-            new Sample3LambdaScope().r2.run();
+            new Sample3LambdaScope().runIt();
+            new Sample3LambdaScope().runIt();
     }
 }
 

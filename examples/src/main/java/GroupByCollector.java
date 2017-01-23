@@ -4,7 +4,6 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /**
  * @author victorp
@@ -24,8 +23,9 @@ public class GroupByCollector<F,R> implements Collector<R, Map<F,List<R>>, Map<F
 
     @Override
     public BiConsumer<Map<F, List<R>>, R> accumulator() {
-        return (map,element)-> {
-            F gBy = groupBy.apply(element);
+        return (Map<F, List<R>> map, R element)-> {
+             F gBy = groupBy.apply(element);
+            @SuppressWarnings("nullness")
             List<R> list = map.get(gBy);
             if (list == null){
                 list = new LinkedList<>();
