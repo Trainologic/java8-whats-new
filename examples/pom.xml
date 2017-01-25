@@ -63,6 +63,10 @@
                     <annotationProcessors>
                         <!-- Add all the checkers you want to enable here -->
                         <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.regex.RegexChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.index.upperbound.UpperBoundChecker</annotationProcessor>
+
+
                     </annotationProcessors>
                     <compilerArgs>
                         <!-- location of the annotated JDK, which comes from a Maven dependency -->
