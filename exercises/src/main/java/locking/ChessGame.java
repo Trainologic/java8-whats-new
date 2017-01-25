@@ -19,7 +19,6 @@ abstract public class ChessGame {
 
 
     private final static long UPDATE_MILLIS = 300;
-    private final static long READ_MILLIS = 10;
 
 
 
@@ -62,7 +61,6 @@ abstract public class ChessGame {
 
             //print theState
             readCount.increment();
-            //sleep(READ_MILLIS);
         }
 
 
