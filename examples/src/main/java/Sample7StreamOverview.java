@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -64,9 +66,9 @@ public class Sample7StreamOverview {
          * Sum
          */
 
-        int total = names.stream().mapToInt(String::hashCode).sum();
-//
-//        // Optional (new in Java8)
+//        int total = names.stream().mapToInt(String::hashCode).sum();
+////
+////        // Optional (new in Java8)
 //        Optional<Integer> reduce = names.stream()
 //                        .map(String::hashCode)
 //                        .reduce((x, y) -> x + y);
@@ -138,10 +140,14 @@ public class Sample7StreamOverview {
         /**
          * Custom collector
          */
-//        Map<Integer,List<String>> lenToNames = names.stream()
-//                        .collect(new GroupByCollector<>(name->name.length()));
+//        Util.println(
+//                names.stream()
+//                        .collect(new GroupByCollector<>(name->name.length())));
 //
-//        Util.println(lenToNames);
+
+
     }
+
+
 
 }
